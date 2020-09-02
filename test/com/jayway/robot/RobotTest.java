@@ -12,7 +12,7 @@ class RobotTest {
 
     @Test
     void itTurnsLeftWithoutMoving() {
-        var robot = Robot.from(unboundedRoom(0, 0));
+        var robot = Robot.from(unboundedRoom(0, 0, facingNorth));
 
         var previousPosition = robot.getPosition();
         var previousDirection = robot.getDirection();
@@ -25,7 +25,7 @@ class RobotTest {
 
     @Test
     void itTurnsRightWithoutMoving() {
-        var robot = Robot.from(unboundedRoom(0, 0));
+        var robot = Robot.from(unboundedRoom(0, 0, facingNorth));
 
         var previousPosition = robot.getPosition();
         var previousDirection = robot.getDirection();
@@ -38,7 +38,7 @@ class RobotTest {
 
     @Test
     void itMovesForwardWithoutTurning() {
-        var robot = Robot.from(unboundedRoom(0, 0));
+        var robot = Robot.from(unboundedRoom(0, 0, facingNorth));
 
         var previousDirection = robot.getDirection();
 
@@ -50,7 +50,7 @@ class RobotTest {
 
     @Test
     void itRunsExample1() {
-        var robot = Robot.from(unboundedRoom(1, 2));
+        var robot = Robot.from(unboundedRoom(1, 2, facingNorth));
 
         streamCommands("se", "HGHGGHGHG").forEach(robot::execute);
 
@@ -60,7 +60,7 @@ class RobotTest {
 
     @Test
     void itRunsExample2() {
-        var robot = Robot.from(unboundedRoom(0, 0));
+        var robot = Robot.from(unboundedRoom(0, 0, facingNorth));
 
         streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
 
@@ -70,9 +70,9 @@ class RobotTest {
 
     @Test
     void itDoesntLeaveABoundedRoom() {
-        var robot = Robot.from(squareRoom(2, 0, 0));
+        var robot = Robot.from(squareRoom(2, 0, 0, facingSouth));
 
-        streamCommands("se", "HHGGGVGGG").forEach(robot::execute);
+        streamCommands("se", "GGGVGGG").forEach(robot::execute);
 
         assertEquals(facingEast, robot.getDirection());
         assertEquals(new RobotPosition(1, 1), robot.getPosition());

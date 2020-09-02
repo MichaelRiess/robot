@@ -3,11 +3,16 @@ package com.jayway.robot;
 import java.awt.*;
 
 public class RoomFactory {
-    public static Room unboundedRoom(int startX, int startY) {
+    public static Room unboundedRoom(int startX, int startY, Direction direction) {
         return new Room() {
             @Override
             public Point getStartPosition() {
                 return new Point(startX, startY);
+            }
+
+            @Override
+            public Direction startingDirection() {
+                return direction;
             }
 
             @Override
@@ -17,11 +22,15 @@ public class RoomFactory {
         };
     }
 
-    public static Room squareRoom(int size, int startX, int startY) {
+    public static Room squareRoom(int size, int startX, int startY, Direction direction) {
         return new Room() {
             @Override
             public Point getStartPosition() {
                 return new Point(startX, startY);
+            }
+            @Override
+            public Direction startingDirection() {
+                return direction;
             }
 
             @Override
