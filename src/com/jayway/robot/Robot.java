@@ -26,7 +26,7 @@ public class Robot {
                 direction = direction.turnRight();
                 break;
             case moveForward:
-                var newPosition = position.towards(direction);
+                var newPosition = position.moveForward(direction);
                 if (room.contains(newPosition)) {
                     position = newPosition;
                 }

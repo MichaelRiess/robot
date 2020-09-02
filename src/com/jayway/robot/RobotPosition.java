@@ -13,7 +13,11 @@ public class RobotPosition {
         this.y = y;
     }
 
-    public RobotPosition towards(Direction direction) {
+    /**
+     * This encapsulates the translation from direction/orientation
+     * of the robot to the movement on the grid.
+     */
+    public RobotPosition moveForward(Direction direction) {
         switch (direction) {
             case facingNorth:
                 return new RobotPosition(x, y - 1);

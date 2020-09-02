@@ -2,6 +2,11 @@ package com.jayway.robot;
 
 import java.awt.*;
 
+/**
+ * The circle room has been left out,
+ * since the requirements were unclear on
+ * how to construct/define it.
+ */
 public class RoomFactory {
     public static Room unboundedRoom(int startX, int startY, Direction direction) {
         return new Room() {
