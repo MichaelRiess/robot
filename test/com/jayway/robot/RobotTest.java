@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.jayway.robot.Command.*;
 import static com.jayway.robot.Direction.*;
+import static com.jayway.robot.RoomFactory.squareRoom;
 import static com.jayway.robot.RoomFactory.unboundedRoom;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -63,6 +64,18 @@ class RobotTest {
 
         assertEquals(new RobotPosition(3, 1), robot.getPosition());
         assertEquals(facingEast, robot.getDirection());
+    }
+
+    @Test
+    void itDoesntLeaveABoundedRoom() {
+        var room = squareRoom(2, 0, 0);
+        var robot = Robot.from(room);
+
+        streamCommands("se", "HHGGGVGGG").forEach(robot::execute);
+
+        assertEquals(facingEast, robot.getDirection());
+        assertEquals(new RobotPosition(1, 1), robot.getPosition());
+
     }
 
 }

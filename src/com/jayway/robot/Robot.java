@@ -3,13 +3,16 @@ package com.jayway.robot;
 public class Robot {
 
     public static Robot from(Room room) {
-        return new Robot(room.getRobotStartPosition(), room.startingDirection());
+        return new Robot(room, room.getRobotStartPosition(), room.startingDirection());
     }
+
+    private final Room room;
 
     private RobotPosition position;
     private Direction direction;
 
-    private Robot(RobotPosition position, Direction direction) {
+    private Robot(Room room, RobotPosition position, Direction direction) {
+        this.room = room;
         this.position = position;
         this.direction = direction;
     }
@@ -23,7 +26,10 @@ public class Robot {
                 direction = direction.turnRight();
                 break;
             case moveForward:
-                position = position.towards(direction);
+                var newPosition = position.towards(direction);
+                if (room.contains(newPosition)) {
+                    position = newPosition;
+                }
                 break;
         }
     }
