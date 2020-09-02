@@ -1,5 +1,6 @@
 package com.jayway.robot;
 
+import java.awt.*;
 import java.util.Objects;
 
 public class RobotPosition {
@@ -43,5 +44,9 @@ public class RobotPosition {
 
     public String toString() {
         return x + " " + y;
+    }
+
+    public Point asPoint() {
+        return new Point(x, y);
     }
 }
