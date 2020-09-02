@@ -12,9 +12,10 @@ class RobotEngineTest {
 
     @Test
     void itRunsExample1() {
-        var commands = streamCommands("se", "HGHGGHGHG");
+        var room = unboundedRoom(1, 2);
+        var robot = new Robot(room.getRobotStartPosition(), facingNorth);
 
-        var robot = RobotEngine.run(unboundedRoom(1, 2), commands);
+        streamCommands("se", "HGHGGHGHG").forEach(robot::execute);
 
         assertEquals(new RobotPosition(1, 3), robot.getPosition());
         assertEquals(facingNorth, robot.getDirection());
@@ -22,9 +23,10 @@ class RobotEngineTest {
 
     @Test
     void itRunsExample2() {
-        var commands = streamCommands("en", "RRFLFFLRF");
+        var room = unboundedRoom(0, 0);
+        var robot = new Robot(room.getRobotStartPosition(), facingNorth);
 
-        var robot = RobotEngine.run(unboundedRoom(0, 0), commands);
+        streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
 
         assertEquals(new RobotPosition(3, 1), robot.getPosition());
         assertEquals(facingEast, robot.getDirection());

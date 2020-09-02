@@ -3,13 +3,12 @@ package com.jayway.robot;
 import org.junit.jupiter.api.Test;
 
 import static com.jayway.robot.Command.*;
-import static com.jayway.robot.Direction.facingEast;
-import static com.jayway.robot.Direction.facingWest;
+import static com.jayway.robot.Direction.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RobotTest {
 
-    private final Robot robot = new Robot(new RobotPosition(0, 0));
+    private final Robot robot = new Robot(new RobotPosition(0, 0), facingNorth);
 
     @Test
     void itTurnsLeftWithoutMoving() {

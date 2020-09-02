@@ -1,14 +1,13 @@
 package com.jayway.robot;
 
-import static com.jayway.robot.Direction.facingNorth;
-
 public class Robot {
 
     private RobotPosition position;
-    private Direction direction = facingNorth;
+    private Direction direction;
 
-    public Robot(RobotPosition position) {
+    public Robot(RobotPosition position, Direction direction) {
         this.position = position;
+        this.direction = direction;
     }
 
     public void execute(Command command) {
