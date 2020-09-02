@@ -16,7 +16,7 @@ public class RoomFactory {
             }
 
             @Override
-            public Direction startingDirection() {
+            public Direction getStartDirection() {
                 return direction;
             }
 
@@ -34,7 +34,7 @@ public class RoomFactory {
                 return new Point(startX, startY);
             }
             @Override
-            public Direction startingDirection() {
+            public Direction getStartDirection() {
                 return direction;
             }
 

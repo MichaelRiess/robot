@@ -25,7 +25,7 @@ public interface Room {
         return contains(new Point(position.asPoint()));
     }
 
-    default Direction startingDirection() {
+    default Direction getStartDirection() {
         return facingNorth;
     }
 }

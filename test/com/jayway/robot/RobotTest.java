@@ -49,16 +49,6 @@ class RobotTest {
     }
 
     @Test
-    void itRunsExample1() {
-        var robot = Robot.from(unboundedRoom(1, 2, facingNorth));
-
-        streamCommands("se", "HGHGGHGHG").forEach(robot::execute);
-
-        assertEquals(new RobotPosition(1, 3), robot.getPosition());
-        assertEquals(facingNorth, robot.getDirection());
-    }
-
-    @Test
     void itRunsExample2() {
         var robot = Robot.from(unboundedRoom(0, 0, facingNorth));
 

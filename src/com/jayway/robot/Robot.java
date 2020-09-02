@@ -3,7 +3,7 @@ package com.jayway.robot;
 public class Robot {
 
     public static Robot from(Room room) {
-        return new Robot(room, room.getRobotStartPosition(), room.startingDirection());
+        return new Robot(room, room.getRobotStartPosition(), room.getStartDirection());
     }
 
     private final Room room;
