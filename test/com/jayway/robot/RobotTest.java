@@ -9,25 +9,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RobotTest {
 
-    private final Robot robot = Robot.from(unboundedRoom(0, 0), facingNorth);
+    private final Robot robot = Robot.from(unboundedRoom(0, 0));
 
     @Test
     void itTurnsLeftWithoutMoving() {
         var previousPosition = robot.getPosition();
+        var previousDirection = robot.getDirection();
 
         robot.execute(turnLeft);
 
-        assertEquals(facingWest, robot.getDirection());
+        assertEquals(previousDirection.turnLeft(), robot.getDirection());
         assertEquals(previousPosition, robot.getPosition());
     }
 
     @Test
     void itTurnsRightWithoutMoving() {
         var previousPosition = robot.getPosition();
+        var previousDirection = robot.getDirection();
 
         robot.execute(turnRight);
 
-        assertEquals(facingEast, robot.getDirection());
+        assertEquals(previousDirection.turnRight(), robot.getDirection());
         assertEquals(previousPosition, robot.getPosition());
     }
 
@@ -44,7 +46,7 @@ class RobotTest {
     @Test
     void itRunsExample1() {
         var room = unboundedRoom(1, 2);
-        var robot = Robot.from(room, facingNorth);
+        var robot = Robot.from(room);
 
         streamCommands("se", "HGHGGHGHG").forEach(robot::execute);
 
@@ -55,7 +57,7 @@ class RobotTest {
     @Test
     void itRunsExample2() {
         var room = unboundedRoom(0, 0);
-        var robot = Robot.from(room, facingNorth);
+        var robot = Robot.from(room);
 
         streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
 
