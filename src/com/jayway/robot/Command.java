@@ -1,5 +1,9 @@
 package com.jayway.robot;
 
+import java.util.stream.Stream;
+
+import static java.util.Arrays.stream;
+
 public enum Command {
     turnLeft, turnRight, moveForward;
 
@@ -30,4 +34,9 @@ public enum Command {
         }
         throw new IllegalArgumentException("language not supported: " + language);
     }
+
+    public static Stream<Command> streamCommands(String language, String commandTokens) {
+        return stream(commandTokens.split("")).map(s -> Command.from(language, s));
+    }
+
 }

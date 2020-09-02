@@ -12,15 +12,15 @@ public class RobotPosition {
         this.y = y;
     }
 
-    public RobotPosition inDirection(Direction direction) {
+    public RobotPosition towards(Direction direction) {
         switch (direction) {
-            case north:
+            case facingNorth:
                 return new RobotPosition(x, y - 1);
-            case south:
+            case facingSouth:
                 return new RobotPosition(x, y + 1);
-            case west:
+            case facingWest:
                 return new RobotPosition(x - 1, y);
-            case east:
+            case facingEast:
                 return new RobotPosition(x + 1, y);
             default:
                 throw new IllegalStateException();
@@ -29,8 +29,9 @@ public class RobotPosition {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof RobotPosition)) {
+            return false;
+        }
         RobotPosition that = (RobotPosition) o;
         return x == that.x && y == that.y;
     }

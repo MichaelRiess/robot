@@ -2,6 +2,7 @@ package com.jayway.robot;
 
 import java.util.stream.Stream;
 
+import static com.jayway.robot.Command.streamCommands;
 import static java.util.Arrays.stream;
 
 public class RobotCLI {
@@ -16,7 +17,7 @@ public class RobotCLI {
             var language = args[2];
             var commands = streamCommands(language, args[3]);
 
-            RobotInRoom robot = run(x, y, commands);
+            var robot = RobotEngine.run(x, y, commands);
 
             System.out.println(robot.getPosition() + " " + robot.getDirection().asLetter());
         }
@@ -25,16 +26,4 @@ public class RobotCLI {
         }
     }
 
-    public static RobotInRoom run(int x, int y, Stream<Command> commands) {
-        var robot = new RobotInRoom(new RobotPosition(x, y));
-
-        commands.forEach(robot::execute);
-
-        return robot;
-    }
-
-    public static Stream<Command> streamCommands(String language, String commandTokens) {
-        return stream(commandTokens.split(""))
-                .map(s -> Command.from(language, s));
-    }
 }

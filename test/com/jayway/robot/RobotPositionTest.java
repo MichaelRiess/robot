@@ -10,10 +10,10 @@ class RobotPositionTest {
     @Test
     void itShouldMoveInAllDirections() {
         var pos = new RobotPosition(0, 0);
-        assertEquals(new RobotPosition(0, -1), pos.inDirection(north));
-        assertEquals(new RobotPosition(0, 1), pos.inDirection(south));
-        assertEquals(new RobotPosition(1, 0), pos.inDirection(east));
-        assertEquals(new RobotPosition(-1, 0), pos.inDirection(west));
+        assertEquals(new RobotPosition(0, -1), pos.towards(facingNorth));
+        assertEquals(new RobotPosition(0, 1), pos.towards(facingSouth));
+        assertEquals(new RobotPosition(1, 0), pos.towards(facingEast));
+        assertEquals(new RobotPosition(-1, 0), pos.towards(facingWest));
     }
 
 }

@@ -3,13 +3,13 @@ package com.jayway.robot;
 import java.util.List;
 
 public enum Direction {
-    north("N"), south("S"), west("V"), east("Ö");
+    facingNorth("N"), facingSouth("S"), facingWest("V"), facingEast("Ö");
 
-    private static final List<Direction> directions = List.of(north, east, south, west);
+    private static final List<Direction> directions = List.of(facingNorth, facingEast, facingSouth, facingWest);
+
     private final String letter;
 
     Direction(String letter) {
-
         this.letter = letter;
     }
 

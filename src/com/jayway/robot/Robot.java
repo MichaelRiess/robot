@@ -1,24 +1,26 @@
 package com.jayway.robot;
 
-public class RobotInRoom {
+import static com.jayway.robot.Direction.facingNorth;
+
+public class Robot {
 
     private RobotPosition position;
-    private Direction facing = Direction.north;
+    private Direction direction = facingNorth;
 
-    public RobotInRoom(RobotPosition position) {
+    public Robot(RobotPosition position) {
         this.position = position;
     }
 
     public void execute(Command command) {
         switch(command) {
             case turnLeft:
-                facing = facing.turnLeft();
+                direction = direction.turnLeft();
                 break;
             case turnRight:
-                facing = facing.turnRight();
+                direction = direction.turnRight();
                 break;
             case moveForward:
-                position = position.inDirection(facing);
+                position = position.towards(direction);
                 break;
         }
     }
@@ -28,7 +30,7 @@ public class RobotInRoom {
     }
 
     public Direction getDirection() {
-        return facing;
+        return direction;
     }
 
 }
