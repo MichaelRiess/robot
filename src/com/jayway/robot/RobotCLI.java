@@ -2,6 +2,7 @@ package com.jayway.robot;
 
 import static com.jayway.robot.Command.streamCommands;
 import static com.jayway.robot.Direction.facingNorth;
+import static com.jayway.robot.RoomFactory.unboundedRoom;
 
 public class RobotCLI {
 
@@ -21,12 +22,11 @@ public class RobotCLI {
 
         var x = Integer.parseInt(args[0]);
         var y = Integer.parseInt(args[1]);
-        var room = RoomFactory.unboundedRoom(x, y);
+        var room = unboundedRoom(x, y);
 
-        var robot = new Robot(room.getRobotStartPosition(), facingNorth);
+        var robot = Robot.from(room, facingNorth);
 
         var language = args[2];
-
         streamCommands(language, args[3]).forEach(robot::execute);
 
         System.out.println(robot.getPosition() + " " + robot.getDirection().asLetter());

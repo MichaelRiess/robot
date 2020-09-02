@@ -2,10 +2,14 @@ package com.jayway.robot;
 
 public class Robot {
 
+    public static Robot from(Room room, Direction direction) {
+        return new Robot(room.getRobotStartPosition(), direction);
+    }
+
     private RobotPosition position;
     private Direction direction;
 
-    public Robot(RobotPosition position, Direction direction) {
+    private Robot(RobotPosition position, Direction direction) {
         this.position = position;
         this.direction = direction;
     }
