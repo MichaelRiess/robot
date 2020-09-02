@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RobotTest {
 
-    private final Robot robot = Robot.from(unboundedRoom(0, 0));
-
     @Test
     void itTurnsLeftWithoutMoving() {
+        var robot = Robot.from(unboundedRoom(0, 0));
+
         var previousPosition = robot.getPosition();
         var previousDirection = robot.getDirection();
 
@@ -25,6 +25,8 @@ class RobotTest {
 
     @Test
     void itTurnsRightWithoutMoving() {
+        var robot = Robot.from(unboundedRoom(0, 0));
+
         var previousPosition = robot.getPosition();
         var previousDirection = robot.getDirection();
 
@@ -36,6 +38,8 @@ class RobotTest {
 
     @Test
     void itMovesForwardWithoutTurning() {
+        var robot = Robot.from(unboundedRoom(0, 0));
+
         var previousDirection = robot.getDirection();
 
         robot.execute(moveForward);
@@ -46,8 +50,7 @@ class RobotTest {
 
     @Test
     void itRunsExample1() {
-        var room = unboundedRoom(1, 2);
-        var robot = Robot.from(room);
+        var robot = Robot.from(unboundedRoom(1, 2));
 
         streamCommands("se", "HGHGGHGHG").forEach(robot::execute);
 
@@ -57,8 +60,7 @@ class RobotTest {
 
     @Test
     void itRunsExample2() {
-        var room = unboundedRoom(0, 0);
-        var robot = Robot.from(room);
+        var robot = Robot.from(unboundedRoom(0, 0));
 
         streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
 
@@ -68,8 +70,7 @@ class RobotTest {
 
     @Test
     void itDoesntLeaveABoundedRoom() {
-        var room = squareRoom(2, 0, 0);
-        var robot = Robot.from(room);
+        var robot = Robot.from(squareRoom(2, 0, 0));
 
         streamCommands("se", "HHGGGVGGG").forEach(robot::execute);
 
