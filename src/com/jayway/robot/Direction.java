@@ -2,10 +2,12 @@ package com.jayway.robot;
 
 import java.util.List;
 
-public enum Direction {
-    facingNorth("N"), facingSouth("S"), facingWest("V"), facingEast("Ö");
+import static java.util.Arrays.asList;
 
-    private static final List<Direction> directions = List.of(facingNorth, facingEast, facingSouth, facingWest);
+public enum Direction {
+    facingNorth("N"), facingEast("Ö"), facingSouth("S"), facingWest("V");
+
+    public static final List<Direction> directions = asList(values());
 
     private final String letter;
 
@@ -14,13 +16,17 @@ public enum Direction {
     }
 
     public Direction turnLeft() {
-        var pos = directions.indexOf(this) - 1;
-        return directions.get(pos < 0 ? directions.size() - 1 : pos);
+        return get(directions.indexOf(this) - 1);
     }
 
     public Direction turnRight() {
-        var pos = directions.indexOf(this) + 1;
-        return directions.get(pos == directions.size() ? 0 : pos);
+        return get(directions.indexOf(this) + 1);
+    }
+
+    private Direction get(int pos) {
+        var size = directions.size();
+        // we use the directions list like a ring buffer
+        return directions.get((pos + size) % size);
     }
 
     public String asLetter() {

@@ -1,9 +1,11 @@
 package com.jayway.robot;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import static com.jayway.robot.Direction.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DirectionTest {
 
@@ -29,5 +31,11 @@ class DirectionTest {
     void itWorksFromEast() {
         assertEquals(facingSouth, facingEast.turnRight());
         assertEquals(facingNorth, facingEast.turnLeft());
+    }
+
+    @ParameterizedTest
+    @EnumSource(Direction.class)
+    void itTurnsAndTurnsBackAgain(Direction direction) {
+        assertEquals(direction, direction.turnLeft().turnRight());
     }
 }
