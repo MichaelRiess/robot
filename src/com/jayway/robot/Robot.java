@@ -28,6 +28,8 @@ public class Robot {
                 break;
             case moveForward:
                 var newPosition = position.moveForward(direction);
+                // the requirements do not specify what should happen when the robot encounters a "wall".
+                // the natural thing seems to be to just not move forward.
                 if (room.contains(newPosition)) {
                     position = newPosition;
                 }
