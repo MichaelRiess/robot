@@ -4,15 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import static com.jayway.robot.Command.*;
 import static com.jayway.robot.Direction.*;
-import static com.jayway.robot.RoomFactory.squareRoom;
-import static com.jayway.robot.RoomFactory.unboundedRoom;
+import static com.jayway.robot.RobotFactory.createRobot;
+import static com.jayway.robot.RoomFactory.createSquareRoom;
+import static com.jayway.robot.RoomFactory.createUnboundedRoom;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RobotTest {
+class DefaultRobotTest {
 
     @Test
     void itTurnsLeftWithoutMoving() {
-        var robot = Robot.from(unboundedRoom(0, 0, facingNorth));
+        var robot = createRobot(createUnboundedRoom(0, 0, facingNorth));
 
         var previousPosition = robot.getPosition();
         var previousDirection = robot.getDirection();
@@ -25,7 +26,7 @@ class RobotTest {
 
     @Test
     void itTurnsRightWithoutMoving() {
-        var robot = Robot.from(unboundedRoom(0, 0, facingNorth));
+        var robot = createRobot(createUnboundedRoom(0, 0, facingNorth));
 
         var previousPosition = robot.getPosition();
         var previousDirection = robot.getDirection();
@@ -38,7 +39,7 @@ class RobotTest {
 
     @Test
     void itMovesForwardWithoutTurning() {
-        var robot = Robot.from(unboundedRoom(0, 0, facingNorth));
+        var robot = createRobot(createUnboundedRoom(0, 0, facingNorth));
 
         var previousDirection = robot.getDirection();
 
@@ -50,7 +51,7 @@ class RobotTest {
 
     @Test
     void itRunsExample2() {
-        var robot = Robot.from(unboundedRoom(0, 0, facingNorth));
+        var robot = createRobot(createUnboundedRoom(0, 0, facingNorth));
 
         streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
 
@@ -60,7 +61,7 @@ class RobotTest {
 
     @Test
     void itDoesntLeaveABoundedRoom() {
-        var robot = Robot.from(squareRoom(2, 0, 0, facingSouth));
+        var robot = createRobot(createSquareRoom(2, 0, 0, facingSouth));
 
         streamCommands("se", "GGGVGGG").forEach(robot::execute);
 

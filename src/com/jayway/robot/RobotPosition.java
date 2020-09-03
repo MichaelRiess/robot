@@ -3,7 +3,7 @@ package com.jayway.robot;
 import java.awt.*;
 import java.util.Objects;
 
-public class RobotPosition {
+class RobotPosition {
 
     private final int x;
     private final int y;
