@@ -5,7 +5,6 @@ import java.util.Objects;
 
 public class Position {
 
-
     public static Position of(int x, int y) {
         return new Position(x, y);
     }

@@ -9,7 +9,7 @@ public class DefaultRobot implements Robot {
     private Position position;
     private Direction direction;
 
-    public DefaultRobot(Room room, Position position, Direction direction) {
+    DefaultRobot(Room room, Position position, Direction direction) {
         this.room = room;
         this.position = position;
         this.direction = direction;
@@ -17,7 +17,7 @@ public class DefaultRobot implements Robot {
 
     @Override
     public void execute(Command command) {
-        switch(command) {
+        switch (command) {
             case turnLeft:
                 turnLeft();
                 break;
