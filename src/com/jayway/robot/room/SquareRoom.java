@@ -8,7 +8,7 @@ import java.awt.*;
 class SquareRoom extends UnboundedRoom {
     private final int size;
 
-    public SquareRoom(Position start, Direction direction, int size) {
+    SquareRoom(Position start, Direction direction, int size) {
         super(start, direction);
         this.size = size;
     }

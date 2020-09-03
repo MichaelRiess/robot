@@ -9,7 +9,7 @@ class UnboundedRoom implements Room {
     private final Position start;
     private final Direction direction;
 
-    public UnboundedRoom(Position start, Direction direction) {
+    UnboundedRoom(Position start, Direction direction) {
         this.start = start;
         this.direction = direction;
     }
