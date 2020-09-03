@@ -1,4 +1,7 @@
-package com.jayway.robot;
+package com.jayway.robot.room;
+
+import com.jayway.robot.Direction;
+import com.jayway.robot.Position;
 
 import java.awt.*;
 
@@ -16,12 +19,11 @@ public interface Room {
     java.awt.Point getStartPosition();
     boolean contains(java.awt.Point position);
 
-    default RobotPosition getRobotStartPosition() {
-        var startPosition = getStartPosition();
-        return new RobotPosition(startPosition.x, startPosition.y);
+    default Position getRobotStartPosition() {
+        return Position.of(getStartPosition());
     }
 
-    default boolean contains(RobotPosition position) {
+    default boolean contains(Position position) {
         return contains(new Point(position.asPoint()));
     }
 

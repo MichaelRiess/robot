@@ -1,13 +1,15 @@
 package com.jayway.robot;
 
+import com.jayway.robot.room.Room;
+
 public class DefaultRobot implements Robot {
 
     private final Room room;
 
-    private RobotPosition position;
+    private Position position;
     private Direction direction;
 
-    public DefaultRobot(Room room, RobotPosition position, Direction direction) {
+    public DefaultRobot(Room room, Position position, Direction direction) {
         this.room = room;
         this.position = position;
         this.direction = direction;
@@ -34,7 +36,7 @@ public class DefaultRobot implements Robot {
     }
 
     @Override
-    public RobotPosition getPosition() {
+    public Position getPosition() {
         return position;
     }
 

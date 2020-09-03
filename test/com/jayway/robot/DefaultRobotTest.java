@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import static com.jayway.robot.Command.*;
 import static com.jayway.robot.Direction.*;
 import static com.jayway.robot.RobotFactory.createRobot;
-import static com.jayway.robot.RoomFactory.createSquareRoom;
-import static com.jayway.robot.RoomFactory.createUnboundedRoom;
+import static com.jayway.robot.room.RoomFactory.createSquareRoom;
+import static com.jayway.robot.room.RoomFactory.createUnboundedRoom;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DefaultRobotTest {
@@ -45,7 +45,7 @@ class DefaultRobotTest {
 
         robot.execute(moveForward);
 
-        assertEquals(new RobotPosition(0, -1), robot.getPosition());
+        assertEquals(Position.of(0, -1), robot.getPosition());
         assertEquals(previousDirection, robot.getDirection());
     }
 
@@ -55,7 +55,7 @@ class DefaultRobotTest {
 
         streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
 
-        assertEquals(new RobotPosition(3, 1), robot.getPosition());
+        assertEquals(Position.of(3, 1), robot.getPosition());
         assertEquals(facingEast, robot.getDirection());
     }
 
@@ -66,7 +66,7 @@ class DefaultRobotTest {
         streamCommands("se", "GGGVGGG").forEach(robot::execute);
 
         assertEquals(facingEast, robot.getDirection());
-        assertEquals(new RobotPosition(1, 1), robot.getPosition());
+        assertEquals(Position.of(1, 1), robot.getPosition());
 
     }
 

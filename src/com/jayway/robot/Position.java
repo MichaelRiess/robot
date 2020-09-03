@@ -3,12 +3,21 @@ package com.jayway.robot;
 import java.awt.*;
 import java.util.Objects;
 
-class RobotPosition {
+public class Position {
+
+
+    public static Position of(int x, int y) {
+        return new Position(x, y);
+    }
+
+    public static Position of(Point point) {
+        return new Position(point.x, point.y);
+    }
 
     private final int x;
     private final int y;
 
-    public RobotPosition(int x, int y) {
+    private Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -17,16 +26,16 @@ class RobotPosition {
      * This encapsulates the translation from direction/orientation
      * of the robot to the movement on the grid.
      */
-    public RobotPosition moveForward(Direction direction) {
+    public Position moveForward(Direction direction) {
         switch (direction) {
             case facingNorth:
-                return new RobotPosition(x, y - 1);
+                return new Position(x, y - 1);
             case facingSouth:
-                return new RobotPosition(x, y + 1);
+                return new Position(x, y + 1);
             case facingWest:
-                return new RobotPosition(x - 1, y);
+                return new Position(x - 1, y);
             case facingEast:
-                return new RobotPosition(x + 1, y);
+                return new Position(x + 1, y);
             default:
                 throw new IllegalStateException();
         }
@@ -34,10 +43,10 @@ class RobotPosition {
 
     @Override
     public boolean equals(Object o) {
-        if (!(o instanceof RobotPosition)) {
+        if (!(o instanceof Position)) {
             return false;
         }
-        RobotPosition that = (RobotPosition) o;
+        Position that = (Position) o;
         return x == that.x && y == that.y;
     }
 

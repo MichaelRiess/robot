@@ -1,4 +1,6 @@
-package com.jayway.robot;
+package com.jayway.robot.room;
+
+import com.jayway.robot.Direction;
 
 /**
  * The circle room has been left out,

@@ -3,7 +3,7 @@ package com.jayway.robot;
 import static com.jayway.robot.Command.streamCommands;
 import static com.jayway.robot.Direction.facingNorth;
 import static com.jayway.robot.RobotFactory.createRobot;
-import static com.jayway.robot.RoomFactory.createUnboundedRoom;
+import static com.jayway.robot.room.RoomFactory.createUnboundedRoom;
 
 public class RobotCLI {
 
