@@ -17,7 +17,7 @@ public class DefaultRobot implements Robot {
 
     @Override
     public void execute(Command command) {
-        switch(command) {
+        switch (command) {
             case turnLeft:
                 turnLeft();
                 break;
