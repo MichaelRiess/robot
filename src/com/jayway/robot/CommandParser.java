@@ -6,10 +6,20 @@ import static java.util.Arrays.stream;
 
 public class CommandParser {
     public static Stream<Command> streamCommands(String language, String commandTokens) {
+        if (commandTokens == null) {
+            return Stream.empty();
+        }
         return stream(commandTokens.split("")).map(s -> parseCommand(language, s));
     }
 
     public static Command parseCommand(String language, String token) {
+        if (language == null) {
+            throw new IllegalArgumentException();
+        }
+        if (token == null) {
+            throw new IllegalArgumentException();
+        }
+
         switch (language) {
             case "se":
                 return parseSwedishCommand(token);
@@ -20,7 +30,7 @@ public class CommandParser {
         }
     }
 
-    public static Command parseEnglishCommand(String token) {
+    private static Command parseEnglishCommand(String token) {
         switch (token) {
             case "L":
                 return Command.turnLeft;
@@ -33,7 +43,7 @@ public class CommandParser {
         }
     }
 
-    public static Command parseSwedishCommand(String token) {
+    private static Command parseSwedishCommand(String token) {
         switch (token) {
             case "V":
                 return Command.turnLeft;
