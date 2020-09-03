@@ -22,6 +22,10 @@ public class Position {
         this.y = y;
     }
 
+    public Position shift(int x, int y) {
+        return new Position(this.x + x, this.y + y);
+    }
+
     /**
      * This encapsulates the translation from direction/orientation
      * of the robot to the movement on the grid.
@@ -29,13 +33,13 @@ public class Position {
     public Position moveForward(Direction direction) {
         switch (direction) {
             case facingNorth:
-                return new Position(x, y - 1);
+                return shift(0, -1);
             case facingSouth:
-                return new Position(x, y + 1);
+                return shift(0, 1);
             case facingWest:
-                return new Position(x - 1, y);
+                return shift(-1, 0);
             case facingEast:
-                return new Position(x + 1, y);
+                return shift(1, 0);
             default:
                 throw new IllegalStateException();
         }

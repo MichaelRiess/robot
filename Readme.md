@@ -31,3 +31,7 @@ Since it is part of the requirements, the code uses the Room interface as define
 #### What Happens at Room Boundaries?
 
 * In both example 1 and 2 the robot never tries to step out of the room. The requirements say nothing about what should happen in that event. In this implementation the robot will simply ignore the forward command and do nothing when the movement would result in it occupying coordinates which are not contained in the Room.
+
+#### Internationalization
+
+* Some of the commands can be specified in swedish or english, but the outputs (directions) are just in swedish. This implementation makes no attempt at properly defining locales and outsourcing labels until requirements are more clear on that aspect.
