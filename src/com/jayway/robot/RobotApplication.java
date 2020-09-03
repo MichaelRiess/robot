@@ -6,7 +6,7 @@ import static com.jayway.robot.RobotFactory.createRobot;
 import static com.jayway.robot.room.RoomFactory.createUnboundedRoom;
 import static java.lang.Integer.parseInt;
 
-public class RobotCLI {
+public class RobotApplication {
 
     public static void main(String... args) {
         try {

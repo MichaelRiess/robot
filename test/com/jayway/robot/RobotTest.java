@@ -9,7 +9,7 @@ import static com.jayway.robot.room.RoomFactory.createSquareRoom;
 import static com.jayway.robot.room.RoomFactory.createUnboundedRoom;
 import static org.junit.jupiter.api.Assertions.*;
 
-class DefaultRobotTest {
+class RobotTest {
 
     @Test
     void itTurnsLeftWithoutMoving() {

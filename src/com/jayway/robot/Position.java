@@ -22,8 +22,8 @@ public class Position {
         this.y = y;
     }
 
-    public Position shift(int x, int y) {
-        return new Position(this.x + x, this.y + y);
+    public Position offset(int dx, int dy) {
+        return new Position(x + dx, y + dy);
     }
 
     /**
@@ -33,13 +33,13 @@ public class Position {
     public Position moveForward(Direction direction) {
         switch (direction) {
             case facingNorth:
-                return shift(0, -1);
+                return offset(0, -1);
             case facingSouth:
-                return shift(0, 1);
+                return offset(0, 1);
             case facingWest:
-                return shift(-1, 0);
+                return offset(-1, 0);
             case facingEast:
-                return shift(1, 0);
+                return offset(1, 0);
             default:
                 throw new IllegalStateException();
         }

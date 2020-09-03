@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class RobotCLITest {
+class RobotApplicationTest {
     @Test
     void itRunsExample1() {
-        assertEquals("1 3 N", RobotCLI.run("1", "2", "se", "HGHGGHGHG"));
+        assertEquals("1 3 N", RobotApplication.run("1", "2", "se", "HGHGGHGHG"));
     }
 }
