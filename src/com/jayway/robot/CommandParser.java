@@ -13,12 +13,6 @@ public class CommandParser {
     }
 
     public static Command parseCommand(String language, String token) {
-        if (language == null) {
-            throw new IllegalArgumentException();
-        }
-        if (token == null) {
-            throw new IllegalArgumentException();
-        }
 
         switch (language) {
             case "se":

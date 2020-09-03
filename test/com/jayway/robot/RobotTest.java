@@ -39,34 +39,37 @@ class RobotTest {
 
     @Test
     void itMovesForwardWithoutTurning() {
-        var robot = createRobot(createUnboundedRoom(Position.of(0, 0), facingNorth));
+        var start = Position.of(0, 0);
+        var robot = createRobot(createUnboundedRoom(start, facingNorth));
 
         var previousDirection = robot.getDirection();
 
         robot.execute(moveForward);
 
-        assertEquals(Position.of(0, -1), robot.getPosition());
+        assertEquals(start.offset(0, -1), robot.getPosition());
         assertEquals(previousDirection, robot.getDirection());
     }
 
     @Test
     void itRunsExample2() {
-        var robot = createRobot(createUnboundedRoom(Position.of(0, 0), facingNorth));
+        var start = Position.of(0, 0);
+        var robot = createRobot(createUnboundedRoom(start, facingNorth));
 
         CommandParser.streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
 
-        assertEquals(Position.of(3, 1), robot.getPosition());
+        assertEquals(start.offset(3, 1), robot.getPosition());
         assertEquals(facingEast, robot.getDirection());
     }
 
     @Test
     void itDoesntLeaveABoundedRoom() {
-        var robot = createRobot(createSquareRoom(2, Position.of(0, 0), facingSouth));
+        var start = Position.of(0, 0);
+        var robot = createRobot(createSquareRoom(2, start, facingSouth));
 
         CommandParser.streamCommands("se", "GGGVGGG").forEach(robot::execute);
 
         assertEquals(facingEast, robot.getDirection());
-        assertEquals(Position.of(1, 1), robot.getPosition());
+        assertEquals(start.offset(1, 1), robot.getPosition());
 
     }
 

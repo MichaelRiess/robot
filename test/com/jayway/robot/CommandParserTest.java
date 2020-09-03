@@ -16,13 +16,7 @@ class CommandParserTest {
 
     @Test
     void itRejectsInvalidLanguage() {
-        assertThrows(IllegalArgumentException.class, () -> parseCommand(null, "V"));
         assertThrows(IllegalArgumentException.class, () -> parseCommand("de", "V"));
-    }
-
-    @Test
-    void itRejectsMissingToken() {
-        assertThrows(IllegalArgumentException.class, () -> parseCommand("se", null));
     }
 
     @Test
