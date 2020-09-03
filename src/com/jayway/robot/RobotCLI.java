@@ -4,6 +4,7 @@ import static com.jayway.robot.Command.streamCommands;
 import static com.jayway.robot.Direction.facingNorth;
 import static com.jayway.robot.RobotFactory.createRobot;
 import static com.jayway.robot.room.RoomFactory.createUnboundedRoom;
+import static java.lang.Integer.parseInt;
 
 public class RobotCLI {
 
@@ -21,10 +22,8 @@ public class RobotCLI {
             throw new IllegalArgumentException();
         }
 
-        var x = Integer.parseInt(args[0]);
-        var y = Integer.parseInt(args[1]);
-        var room = createUnboundedRoom(x, y, facingNorth);
-
+        var start = Position.of(parseInt(args[0]), parseInt(args[1]));
+        var room = createUnboundedRoom(start, facingNorth);
         var robot = createRobot(room);
 
         var language = args[2];

@@ -13,7 +13,7 @@ class DefaultRobotTest {
 
     @Test
     void itTurnsLeftWithoutMoving() {
-        var robot = createRobot(createUnboundedRoom(0, 0, facingNorth));
+        var robot = createRobot(createUnboundedRoom(Position.of(0, 0), facingNorth));
 
         var previousPosition = robot.getPosition();
         var previousDirection = robot.getDirection();
@@ -26,7 +26,7 @@ class DefaultRobotTest {
 
     @Test
     void itTurnsRightWithoutMoving() {
-        var robot = createRobot(createUnboundedRoom(0, 0, facingNorth));
+        var robot = createRobot(createUnboundedRoom(Position.of(0, 0), facingNorth));
 
         var previousPosition = robot.getPosition();
         var previousDirection = robot.getDirection();
@@ -39,7 +39,7 @@ class DefaultRobotTest {
 
     @Test
     void itMovesForwardWithoutTurning() {
-        var robot = createRobot(createUnboundedRoom(0, 0, facingNorth));
+        var robot = createRobot(createUnboundedRoom(Position.of(0, 0), facingNorth));
 
         var previousDirection = robot.getDirection();
 
@@ -51,7 +51,7 @@ class DefaultRobotTest {
 
     @Test
     void itRunsExample2() {
-        var robot = createRobot(createUnboundedRoom(0, 0, facingNorth));
+        var robot = createRobot(createUnboundedRoom(Position.of(0, 0), facingNorth));
 
         streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
 
@@ -61,7 +61,7 @@ class DefaultRobotTest {
 
     @Test
     void itDoesntLeaveABoundedRoom() {
-        var robot = createRobot(createSquareRoom(2, 0, 0, facingSouth));
+        var robot = createRobot(createSquareRoom(2, Position.of(0, 0), facingSouth));
 
         streamCommands("se", "GGGVGGG").forEach(robot::execute);
 

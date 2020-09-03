@@ -1,30 +1,16 @@
 package com.jayway.robot.room;
 
 import com.jayway.robot.Direction;
+import com.jayway.robot.Position;
 
 import java.awt.*;
 
-class SquareRoom implements Room {
-    private final int startX;
-    private final int startY;
-    private final Direction direction;
+class SquareRoom extends UnboundedRoom {
     private final int size;
 
-    public SquareRoom(int startX, int startY, Direction direction, int size) {
-        this.startX = startX;
-        this.startY = startY;
-        this.direction = direction;
+    public SquareRoom(Position start, Direction direction, int size) {
+        super(start, direction);
         this.size = size;
-    }
-
-    @Override
-    public Point getStartPosition() {
-        return new Point(startX, startY);
-    }
-
-    @Override
-    public Direction getStartDirection() {
-        return direction;
     }
 
     @Override

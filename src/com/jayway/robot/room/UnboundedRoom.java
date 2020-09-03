@@ -1,27 +1,26 @@
 package com.jayway.robot.room;
 
 import com.jayway.robot.Direction;
+import com.jayway.robot.Position;
 
 import java.awt.*;
 
 class UnboundedRoom implements Room {
-    private final int startX;
-    private final int startY;
+    private final Position start;
     private final Direction direction;
 
-    public UnboundedRoom(int startX, int startY, Direction direction) {
-        this.startX = startX;
-        this.startY = startY;
+    public UnboundedRoom(Position start, Direction direction) {
+        this.start = start;
         this.direction = direction;
     }
 
     @Override
-    public Point getStartPosition() {
-        return new Point(startX, startY);
+    public final Point getStartPosition() {
+        return start.asPoint();
     }
 
     @Override
-    public Direction getStartDirection() {
+    public final Direction getStartDirection() {
         return direction;
     }
 

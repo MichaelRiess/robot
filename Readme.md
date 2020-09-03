@@ -12,10 +12,10 @@ The requirements are a bit vague. In an actual project I would reach out to the 
 
 #### What type of API should I provide?
 
-* The examples hint towards a CLI (command line interface), given that a String of commands is the input, and another String is the output. However, as I discuss in a following item, the requirements define no such strings/inputs/syntax for other inputs like the language configuration or the rooms themselves.
-* Therefore I decided to provide a rudimentary CLI which works for running command strings as specified, but with "unbounded" rooms which just have a starting position. 
-* Clients can run examples with more complex rooms by calling the Robot class directly, as shown in the unit tests, with their own Room implementations.
-* The CLI contains only a minimum of error handling. For a production level CLI I would use something like Spring Boot CLI, which provides all the parsing and client feedback out of the box. 
+* The examples hint towards a CLI (command line interface), given that a String of commands is the input, and another String is the output. However, as I discuss in a following chapter, the requirements define no such strings/inputs/syntax for other inputs like the language configuration or the rooms themselves.
+* I decided to provide a rudimentary CLI which works for running command strings as specified, but with "unbounded" rooms which just have a starting position. 
+* Clients can run examples with more complex rooms by using the Robot interface directly, as shown in the unit tests, with their own Room implementations.
+* The CLI contains only a minimum of error handling. For a production level CLI I would use something like Spring Boot CLI, which provides all the parsing and comfortable client feedback out of the box. 
 
 #### The Room interface is messy
 
@@ -26,7 +26,7 @@ Since it is part of the requirements, the code uses the Room interface as define
 
 #### How Can We Specify Rooms?
 
-* The example robot movements (example 1 and 2) specify special rooms (square and circular), but no interface is specified for how to submit them to the robot. Of course the contains() method of the room interface is sufficient for defining a room. The job of doing so (e.g. define a circular room) is outside the scope of this assignment.
+* The example robot movements (example 1 and 2) specify special rooms (square and circular), but no interface is specified for how to submit them to the robot. Of course the contains() method of the room interface is sufficient for defining a room. The job of doing so (e.g. define a circular room) is outside the scope of this assignment, but has been done for the square room in example 1 as a proof of concept.
 
 #### What Happens at Room Boundaries?
 
@@ -34,4 +34,4 @@ Since it is part of the requirements, the code uses the Room interface as define
 
 #### Internationalization
 
-* Some of the commands can be specified in swedish or english, but the outputs (directions) are just in swedish. This implementation makes no attempt at properly defining locales and outsourcing labels until requirements are more clear on that aspect.
+* Some commands can be specified in Swedish or English, but the outputs (directions) are just in Swedish. This implementation makes no attempt at properly defining locales and outsourcing labels until requirements are more clear on that aspect.
