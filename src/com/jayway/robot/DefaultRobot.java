@@ -19,20 +19,34 @@ public class DefaultRobot implements Robot {
     public void execute(Command command) {
         switch(command) {
             case turnLeft:
-                direction = direction.turnLeft();
+                turnLeft();
                 break;
             case turnRight:
-                direction = direction.turnRight();
+                turnRight();
                 break;
             case moveForward:
-                var newPosition = position.moveForward(direction);
-                // the requirements do not specify what should happen when the robot encounters a "wall".
-                // the natural thing seems to be to just not move forward.
-                if (room.contains(newPosition)) {
-                    position = newPosition;
-                }
+                moveForward();
                 break;
         }
+    }
+
+    public void turnLeft() {
+        direction = direction.turnLeft();
+    }
+
+    public void turnRight() {
+        direction = direction.turnRight();
+    }
+
+    public void moveForward() {
+        var newPosition = position.moveForward(direction);
+        if (!room.contains(newPosition)) {
+            // the requirements do not specify what should happen when the robot encounters a "wall".
+            // the natural thing seems to be to just not move forward.
+            return;
+        }
+
+        position = newPosition;
     }
 
     @Override

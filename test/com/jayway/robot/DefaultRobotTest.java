@@ -53,7 +53,7 @@ class DefaultRobotTest {
     void itRunsExample2() {
         var robot = createRobot(createUnboundedRoom(Position.of(0, 0), facingNorth));
 
-        streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
+        CommandParser.streamCommands("en", "RRFLFFLRF").forEach(robot::execute);
 
         assertEquals(Position.of(3, 1), robot.getPosition());
         assertEquals(facingEast, robot.getDirection());
@@ -63,7 +63,7 @@ class DefaultRobotTest {
     void itDoesntLeaveABoundedRoom() {
         var robot = createRobot(createSquareRoom(2, Position.of(0, 0), facingSouth));
 
-        streamCommands("se", "GGGVGGG").forEach(robot::execute);
+        CommandParser.streamCommands("se", "GGGVGGG").forEach(robot::execute);
 
         assertEquals(facingEast, robot.getDirection());
         assertEquals(Position.of(1, 1), robot.getPosition());
